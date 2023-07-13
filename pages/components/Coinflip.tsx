@@ -96,7 +96,7 @@ export default function Coinflip() {
         {isFlipping ? (
           <div className="w-40 h-40 mx-auto animate-flip2">
             <Image
-              src={`/coin/Heads.png`}
+              src={`/coin/${history[0].result}.png`}
               alt="Coin"
               width={100}
               height={100}
@@ -116,7 +116,14 @@ export default function Coinflip() {
                 priority
               />
             ) : (
-              <></>
+              <Image
+                src={`/coin/Tails.png`}
+                alt="Coin"
+                width={100}
+                height={100}
+                className="w-40 h-40 mx-auto "
+                priority
+              />
             )}
           </div>
         )}
