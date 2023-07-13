@@ -95,7 +95,7 @@ export default function Coinflip() {
         {isFlipping ? (
           <div className="w-24 h-24 mx-auto animate-spin2">
             <Image
-              src={`/coin/${selectedSide}.png`}
+              src={`/coin/heads.png`}
               alt="Coin"
               width={96}
               height={96}
