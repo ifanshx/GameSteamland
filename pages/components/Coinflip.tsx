@@ -104,7 +104,7 @@ export default function Coinflip() {
           />
         </div>
 
-        <h1 className="text-2xl font-bold mb-6 text-center">Vent Flip</h1>
+        <h1 className="text-2xl x font-bold mb-6 text-center">Vent Flip</h1>
 
         <div className="mb-4">
           <p className="text-center">Balance: {balance} coin</p>
