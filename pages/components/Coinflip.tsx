@@ -93,40 +93,16 @@ export default function Coinflip() {
       style={{ backgroundImage: 'url("/bg.png")' }}
     >
       <div className="max-w-md mt-20 w-[350px] mx-auto bg-white  bg-opacity-95 border-4 border-black shadow p-2 rounded-3xl">
-        {isFlipping ? (
-          <div className="w-40 h-40 mx-auto animate-flip2">
-            <Image
-              src={`/coin/${history[0].result}.png`}
-              alt="Coin"
-              width={100}
-              height={100}
-              className="w-40 h-40 mx-auto brightness-50"
-              priority
-            />
-          </div>
-        ) : (
-          <div className="mb-4 text-center justify-center items-center">
-            {history.length > 0 ? (
-              <Image
-                src={`/coin/Heads.png`}
-                alt="Coin"
-                width={100}
-                height={100}
-                className="w-40 h-40 mx-auto"
-                priority
-              />
-            ) : (
-              <Image
-                src={`/coin/Tails.png`}
-                alt="Coin"
-                width={100}
-                height={100}
-                className="w-40 h-40 mx-auto "
-                priority
-              />
-            )}
-          </div>
-        )}
+        <div className="w-40 h-40 mx-auto animate-flip2">
+          <Image
+            src={`/coin/${history[0].result}.png`}
+            alt="Coin"
+            width={100}
+            height={100}
+            className="w-40 h-40 mx-auto "
+            priority
+          />
+        </div>
 
         <h1 className="text-2xl font-bold mb-6 text-center">Vent Flip</h1>
 
