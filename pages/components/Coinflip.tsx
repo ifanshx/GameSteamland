@@ -108,7 +108,7 @@ export default function Coinflip() {
           <div className="mb-4 text-center justify-center items-center">
             {history.length > 0 ? (
               <Image
-                src={`/coin/${history[0].result}.png`}
+                src={`/coin/Heads.png`}
                 alt="Coin"
                 width={100}
                 height={100}
@@ -116,14 +116,7 @@ export default function Coinflip() {
                 priority
               />
             ) : (
-              <Image
-                src={`/coin/Tails.png`}
-                alt="Coin"
-                width={100}
-                height={100}
-                className="w-40 h-40 mx-auto "
-                priority
-              />
+              <></>
             )}
           </div>
         )}
