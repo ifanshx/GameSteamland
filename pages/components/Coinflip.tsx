@@ -17,6 +17,7 @@ export default function Coinflip() {
   const [selectedBet, setSelectedBet] = useState(0);
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [isFlipping, setIsFlipping] = useState(false);
+  const [coinImage, setCoinImage] = useState("/coin/heads.png") //default head
 
   const winPercentage = 50;
 
@@ -63,6 +64,8 @@ export default function Coinflip() {
         },
         ...history.slice(0, 4),
       ];
+      
+      setCoinImage( result == "Heads" ? "/coin/heads.png" : "/coin/Tails.png" );
 
       setSelectedSide("");
       setSelectedBet(0);
@@ -90,11 +93,11 @@ export default function Coinflip() {
     audio.play();
   };
 
-  const coinImage = isFlipping
-    ? "heads.png"
-    : selectedSide === "Heads"
-    ? "heads.png"
-    : "tails.png";
+  // const coinImage = isFlipping
+  //   ? "/coin/heads.png"
+  //   : selectedSide === "Heads"
+  //   ? "/coin/heads.png"
+  //   : "/coin/Tails.png";
 
   return (
     <div
@@ -103,15 +106,14 @@ export default function Coinflip() {
     >
       <div className="max-w-md mt-20 w-[350px] mx-auto bg-white  bg-opacity-95 border-4 border-black shadow p-2 rounded-3xl">
         <div className="w-40 h-40 mx-auto ">
-          <Image
-            src={`/coin/${coinImage}`}
+          <img
+            src={coinImage}
             alt={selectedSide}
             width={100}
             height={100}
             className={`w-40 h-40 mx-auto  ${
               isFlipping ? "animate-flip2" : ""
             }`}
-            priority
           />
         </div>
 
