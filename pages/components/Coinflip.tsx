@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
+const headsImage = "/coin/Heads.png";
+const tailsImage = "/coin/Tails.png";
 
 type HistoryItem = {
   result: string;
@@ -15,6 +17,7 @@ export default function Coinflip() {
   const [selectedBet, setSelectedBet] = useState(0);
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [isFlipping, setIsFlipping] = useState(false);
+
   const winPercentage = 50;
 
   const handleSideSelection = (side: string) => {
@@ -87,46 +90,30 @@ export default function Coinflip() {
     audio.play();
   };
 
+  const coinImage = isFlipping
+    ? "heads.png"
+    : selectedSide === "Heads"
+    ? "heads.png"
+    : "tails.png";
+
   return (
     <div
       className="min-h-screen bg-cover object-cover bg-gray-100  flex items-center justify-center"
       style={{ backgroundImage: 'url("/bg.png")' }}
     >
       <div className="max-w-md mt-20 w-[350px] mx-auto bg-white  bg-opacity-95 border-4 border-black shadow p-2 rounded-3xl">
-        {isFlipping ? (
-          <div className="w-40 h-40 mx-auto animate-flip2">
-            <Image
-              src={`/coin/Heads.png`}
-              alt="Coin"
-              width={100}
-              height={100}
-              className="w-40 h-40 mx-auto brightness-50"
-              priority
-            />
-          </div>
-        ) : (
-          <div className="mb-4 text-center justify-center items-center">
-            {history.length > 0 ? (
-              <Image
-                src={`/coin/${history[0].result}.png`}
-                alt="Coin"
-                width={100}
-                height={100}
-                className="w-40 h-40 mx-auto"
-                priority
-              />
-            ) : (
-              <Image
-                src={`/coin/Tails.png`}
-                alt="Coin"
-                width={100}
-                height={100}
-                className="w-40 h-40 mx-auto "
-                priority
-              />
-            )}
-          </div>
-        )}
+        <div className="w-40 h-40 mx-auto ">
+          <Image
+            src={`/coin/${coinImage}`}
+            alt={selectedSide}
+            width={100}
+            height={100}
+            className={`w-40 h-40 mx-auto  ${
+              isFlipping ? "animate-flip2" : ""
+            }`}
+            priority
+          />
+        </div>
 
         <h1 className="text-2xl font-bold mb-6 text-center">Vent Flip</h1>
 
