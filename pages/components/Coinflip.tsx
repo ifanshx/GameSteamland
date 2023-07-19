@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 const headsImage = "/coin/Heads.png";
 const tailsImage = "/coin/Tails.png";
 
@@ -18,6 +19,12 @@ export default function Coinflip() {
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [isFlipping, setIsFlipping] = useState(false);
   const [coinImage, setCoinImage] = useState("/coin/heads.png") //default head
+
+  const WalletMultiButtonDynamic = dynamic(
+    async () =>
+      (await import("@solana/wallet-adapter-react-ui")).WalletMultiButton,
+    { ssr: false }
+  );
 
   const winPercentage = 50;
 
@@ -172,26 +179,31 @@ export default function Coinflip() {
           </button>
         </div>
 
-        <div className="absolute top-0 right-4 mt-2 bg-white bg-opacity-95 border-4 border-black shadow p-6 w-[300px] justify-center text-center items-center rounded-lg">
-          <h2 className="text-lg font-bold mb-1">History</h2>
-          {history.slice(0, 5).map((item, index) => (
-            <div
-              key={index}
-              className={`mb-0 flex items-center  text-center   ${
-                item.won ? "text-green-500" : "text-red-500"
-              }`}
-            >
+        <div className="absolute top-0 right-4 mt-2">
+          <div className="cursor-pointer my-2">
+            <WalletMultiButtonDynamic />
+          </div>
+          <div className="bg-white bg-opacity-95 border-4 border-black shadow p-6 w-[300px] justify-center text-center items-center rounded-lg">
+            <h2 className="text-lg font-bold mb-1">History</h2>
+            {history.slice(0, 5).map((item, index) => (
               <div
-                className={`w-4 h-4 rounded-full mr-2 ${
-                  item.won ? "bg-green-500" : "bg-red-500"
+                key={index}
+                className={`mb-0 flex items-center  text-center   ${
+                  item.won ? "text-green-500" : "text-red-500"
                 }`}
-              />
-              <p className="text-sm">
-                Bet: {item.bet} coin | Result: {item.result} |{" "}
-                {item.won ? "Won" : "Lost"}
-              </p>
-            </div>
-          ))}
+              >
+                <div
+                  className={`w-4 h-4 rounded-full mr-2 ${
+                    item.won ? "bg-green-500" : "bg-red-500"
+                  }`}
+                />
+                <p className="text-sm">
+                  Bet: {item.bet} coin | Result: {item.result} |{" "}
+                  {item.won ? "Won" : "Lost"}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <ToastContainer position="bottom-right" />

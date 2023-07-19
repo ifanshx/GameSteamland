@@ -7,3 +7,11 @@
 body {
   font-family: "Poppins", sans-serif;
 }
+
+.wallet-adapter-dropdown {
+  width: 100%;
+}
+
+.wallet-adapter-button {
+  width: 100%;
+}
