@@ -17,7 +17,12 @@ const History: React.FC<HistoryProps> = ({ history }) => {
     setShowMore((prev) => !prev);
   };
 
-  const displayedHistory = showMore ? history : history.slice(0, 5);
+  // Add a check for valid history array before using the slice method
+  const displayedHistory = Array.isArray(history)
+    ? showMore
+      ? history
+      : history.slice(0, 5)
+    : [];
 
   return (
     <div className="  justify-center text-center items-center">

@@ -36,7 +36,7 @@ const CoinFlipComponent: React.FC = () => {
           />
           <h1 className="text-2xl font-bold mb-6 text-center">VENT FLIP</h1>
           <div className="mb-4">
-            <p className="text-center">Balance: {balance} coin</p>
+            <p className="text-center">Balance: {balance} COIN</p>
           </div>
           <CoinSelection
             selectedSide={selectedSide}
