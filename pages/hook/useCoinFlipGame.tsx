@@ -89,17 +89,23 @@ const useCoinFlipGame = () => {
     audio.play();
   };
 
-  return {
-    balance,
-    selectedSide,
-    selectedBet,
-    history,
-    isFlipping,
-    coinImage,
-    handleSideSelection,
-    handleBetSelection,
-    handleCoinFlip,
-  };
+  const getData = () => {
+    return {
+      balance,
+      selectedSide,
+      selectedBet,
+      history,
+      isFlipping,
+      coinImage,
+      handleSideSelection,
+      handleBetSelection,
+      handleCoinFlip,
+    };
+  }
+
+  return getData;
+
+  
 };
 
 export default useCoinFlipGame;

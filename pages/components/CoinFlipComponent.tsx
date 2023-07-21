@@ -10,6 +10,9 @@ import "react-toastify/dist/ReactToastify.css";
 import useCoinFlipGame from "../hook/useCoinFlipGame";
 
 const CoinFlipComponent: React.FC = () => {
+
+  const getData = useCoinFlipGame();
+
   const {
     balance,
     selectedSide,
@@ -20,7 +23,7 @@ const CoinFlipComponent: React.FC = () => {
     handleSideSelection,
     handleBetSelection,
     handleCoinFlip,
-  } = useCoinFlipGame();
+  } = getData();
 
   return (
     <div
