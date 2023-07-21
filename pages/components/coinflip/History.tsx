@@ -17,8 +17,7 @@ const History: React.FC<HistoryProps> = ({ history }) => {
     setShowMore((prev) => !prev);
   };
 
-  // Add a check for valid history array before using the slice method
-  const displayedHistory = Array.isArray(history)
+  const displayedHistory = history
     ? showMore
       ? history
       : history.slice(0, 5)
