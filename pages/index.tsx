@@ -1,14 +1,14 @@
 import { useState } from "react";
 import Head from "next/head";
-import Coinflip from "./components/Coinflip";
+import CoinFlipComponent from "./components/CoinFlipComponent";
 
 export default function Home() {
   return (
     <div className="">
       <Head>
-        <title>Vent Flip</title>
+        <title>Vent Flip - Steamland</title>
       </Head>
-      <Coinflip />
+      <CoinFlipComponent />
     </div>
   );
 }
