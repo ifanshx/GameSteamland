@@ -60,13 +60,13 @@ const History: React.FC<HistoryProps> = ({ history }) => {
         </table>
       </div>
 
-      {history.length > 5 && (
+      {history?.length > 5 && (
         <div className="mt-3">
           <button
             className="w-auto p-1 rounded-lg bg-slate-100 text-sm text-gray-600 hover:text-gray-800 underline focus:outline-none"
             onClick={toggleShowMore}
           >
-            {showMore ? "Show Less" : `Show ${history.length - 5} More`}
+            {showMore ? "Show Less" : `Show ${history?.length - 5} More`}
           </button>
         </div>
       )}
